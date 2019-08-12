@@ -6,11 +6,12 @@ import pl.hospital.entity.Patient;
 import java.util.List;
 import java.util.Optional;
 
-public interface CRUDService {
+public interface CRUDService<T> {
 
-    public List<Patient> findAll();
-    void save(Patient patient);
-    Optional<Patient> getById(long id);
+    public List<T> findAll();
+    void save(T obj);
+    void save(List<T> list);
+    Optional<T> getById(long id);
     void deleteById(long id) throws NotFoundException;
 
 }

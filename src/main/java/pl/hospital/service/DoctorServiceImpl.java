@@ -2,43 +2,48 @@ package pl.hospital.service;
 
 import javassist.NotFoundException;
 import org.springframework.stereotype.Service;
-import pl.hospital.entity.Patient;
-import pl.hospital.repository.PatientRepository;
+import pl.hospital.entity.Doctor;
+import pl.hospital.repository.DoctorRepository;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class PatientServiceImpl implements CRUDService {
+public class DoctorServiceImpl implements CRUDService<Doctor> {
 
-    private PatientRepository patientRepository;
+    private DoctorRepository doctorRepository;
 
-    public PatientServiceImpl(PatientRepository patientRepository) {
-        this.patientRepository = patientRepository;
+    public DoctorServiceImpl(DoctorRepository doctorRepository) {
+        this.doctorRepository = doctorRepository;
     }
 
     @Override
-    public List<Patient> findAll() {
-        return patientRepository.findAll();
+    public List<Doctor> findAll() {
+        return doctorRepository.findAll();
     }
 
     @Override
-    public void save(Patient patient) {
-        patientRepository.save(patient);
+    public void save(Doctor doctor) {
+            doctorRepository.save(doctor);
+        }
+
+    @Override
+    public void save(List<Doctor> list) {
+        doctorRepository.saveAll(list);
     }
 
     @Override
-    public Optional<Patient> getById(long id) {
-        return patientRepository.findById(id);
+    public Optional<Doctor> getById(long id) {
+        return doctorRepository.findById(id);
     }
 
     @Override
     public void deleteById(long id) throws NotFoundException {
-        if (patientRepository.findById(id) == null){
-            throw new NotFoundException("Patient not exist");
+        if (doctorRepository.findById(id) == null){
+            throw new NotFoundException("Doctor not exist");
         }
         else
-            patientRepository.deleteById(id);
+            doctorRepository.deleteById(id);
     }
 
 }

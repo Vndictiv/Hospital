@@ -1,8 +1,9 @@
-package pl.hospital.service;
+package pl.hospital.off;
 
 import javassist.NotFoundException;
 import org.springframework.stereotype.Service;
 import pl.hospital.repository.PatientDetailsRepository;
+import pl.hospital.service.CRUDService;
 
 import java.util.List;
 import java.util.Optional;
